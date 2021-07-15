@@ -9,16 +9,16 @@ void print_array(int* arr, int SIZE) {
 void arraymergy_2(int* a, int lena, int* b, int lenb, int* c) {
 
 	int i = 0, j = 0, k = 0;
-	while (i < lena && j < lenb) {		//±æÀÌ°¡ ÂªÀº°Ô µ¿³¯ ¶§ ±îÁö..
+	while (i < lena && j < lenb) {		//ê¸¸ì´ê°€ ì§§ì€ê²Œ ë™ë‚  ë•Œ ê¹Œì§€..
 		if (a[i] <= b[j])
 			c[k++] = a[i++];
 		else
 			c[k++] = b[j++];
 	}
-	while (i < lena) {		//a°¡ ³²¾ÒÀ¸¸é,,
+	while (i < lena) {		//aê°€ ë‚¨ì•˜ìœ¼ë©´,,
 		c[k++] = a[i++];
 	}
-	while (j < lenb) {		//b°¡ ³²¾ÒÀ¸¸é,,
+	while (j < lenb) {		//bê°€ ë‚¨ì•˜ìœ¼ë©´,,
 		c[k++] = b[j++];
 	}
 }
@@ -44,7 +44,7 @@ void arraymerge(int* a, int an, int* b, int bn, int* c) {
 	}
 	if (i >= an)
 	{
-		//ÃÊ±âÈ­ ½ÄÀÌ ¾ø¾îµµ µÇ³ª..? -> µÈ´Ù!
+		//ì´ˆê¸°í™” ì‹ì´ ì—†ì–´ë„ ë˜ë‚˜..? -> ëœë‹¤!
 		for (; j < bn; j++)
 		{
 			c[k] = b[j];
