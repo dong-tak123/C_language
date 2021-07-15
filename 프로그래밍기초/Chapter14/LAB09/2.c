@@ -3,13 +3,13 @@
 #include <string.h>
 
 typedef struct {
-	int id;		//ÇĞ¹ø
-	char name[20];		//ÀÌ¸§
-	int mid;			//Áß°£Á¡¼ö (100Á¡¸¸Á¡¿¡ 30%)
-	int final;			//±â¸»Á¡¼ö (100Á¡¸¸Á¡¿¡ 40%)
-	int hw1;			//°úÁ¦1Á¡¼ö (30Á¡ ¸¸Á¡¿¡ 1,2 Æò±Õ)
+	int id;		//í•™ë²ˆ
+	char name[20];		//ì´ë¦„
+	int mid;			//ì¤‘ê°„ì ìˆ˜ (100ì ë§Œì ì— 30%)
+	int final;			//ê¸°ë§ì ìˆ˜ (100ì ë§Œì ì— 40%)
+	int hw1;			//ê³¼ì œ1ì ìˆ˜ (30ì  ë§Œì ì— 1,2 í‰ê· )
 	int hw2;
-	int attendance;		//Ãâ¼®Á¡¼ö (10Á¡ ¸¸Á¡¿¡ 100%)
+	int attendance;		//ì¶œì„ì ìˆ˜ (10ì  ë§Œì ì— 100%)
 }STUDENT;
 
 typedef struct {
@@ -22,10 +22,10 @@ typedef struct {
 	char grade[4];
 }STUDENT_SCORE;
 
-//ÇĞ»ıÁ¤º¸ Ãâ·Â ÇÔ¼ö
+//í•™ìƒì •ë³´ ì¶œë ¥ í•¨ìˆ˜
 void print_student(STUDENT c[], int SIZE) {
-	printf("ÇĞ»ı Á¤º¸\n");
-	printf("  ÇĞ¹ø  ÀÌ¸§   Áß°£  ±â¸»  °úÁ¦1  °úÁ¦2  Ãâ¼®\n");
+	printf("í•™ìƒ ì •ë³´\n");
+	printf("  í•™ë²ˆ  ì´ë¦„   ì¤‘ê°„  ê¸°ë§  ê³¼ì œ1  ê³¼ì œ2  ì¶œì„\n");
 	printf("-------------------------------------------------\n");
 	for (int i = 0; i < SIZE; i++) {
 		printf("%d %s %5d %5d %5d %5d %5d\n", c[i].id, c[i].name, c[i].mid, c[i].final, c[i].hw1, c[i].hw2, c[i].attendance);
@@ -33,11 +33,11 @@ void print_student(STUDENT c[], int SIZE) {
 	printf("-------------------------------------------------\n");
 }
 
-//¼ºÀûÁ¤º¸ Ãâ·Â ÇÔ¼ö
+//ì„±ì ì •ë³´ ì¶œë ¥ í•¨ìˆ˜
 //void print_score(STUDENT_SCORE *c, int SIZE)
 void print_score(STUDENT_SCORE c[], int SIZE) {
-	printf("¼ºÀû Á¤º¸\n");
-	printf("  ÇĞ¹ø  ÀÌ¸§   Áß°£  ±â¸»  °úÁ¦  Ãâ¼®  ÃÑÁ¡  ÇĞÁ¡\n");
+	printf("ì„±ì  ì •ë³´\n");
+	printf("  í•™ë²ˆ  ì´ë¦„   ì¤‘ê°„  ê¸°ë§  ê³¼ì œ  ì¶œì„  ì´ì   í•™ì \n");
 	printf("-------------------------------------------------\n");
 	for (int i = 0; i < SIZE; i++) {
 		printf("%d %s %5.1f %5.1f %5.1f %5d %5.1f %s\n", c[i].student.id, c[i].student.name, c[i].mid_converted, c[i].final_converted, 
@@ -46,28 +46,28 @@ void print_score(STUDENT_SCORE c[], int SIZE) {
 	printf("-------------------------------------------------\n");
 }
 
-//Áß°£°í»ç ¹İ¿µÁ¡¼ö °è»ê ÇÔ¼ö
+//ì¤‘ê°„ê³ ì‚¬ ë°˜ì˜ì ìˆ˜ ê³„ì‚° í•¨ìˆ˜
 double mid_convert(int a) {
 	return a * 0.3;
 }
-//±â¸»°í»ç ¹İ¿µÁ¡¼ö °è»ê ÇÔ¼ö
+//ê¸°ë§ê³ ì‚¬ ë°˜ì˜ì ìˆ˜ ê³„ì‚° í•¨ìˆ˜
 double final_convert(int a) {
 	return a * 0.4;
 }
-//°úÁ¦ ¹İ¿µÁ¡¼ö °è»ê ÇÔ¼ö
+//ê³¼ì œ ë°˜ì˜ì ìˆ˜ ê³„ì‚° í•¨ìˆ˜
 double hw_convert(int a, int b) {
 	return (a + b) / 2.0;
 }
-//Ãâ¼® ¹İ¿µÁ¡¼ö °è»ê ÇÔ¼ö
+//ì¶œì„ ë°˜ì˜ì ìˆ˜ ê³„ì‚° í•¨ìˆ˜
 int attendance_convert(int a) {
 	return a * 1;
 }
-//ÃÑÁ¡ °è»ê ÇÔ¼ö
+//ì´ì  ê³„ì‚° í•¨ìˆ˜
 double sum_score(double a, double b, double c, int d) {
 	return a + b + c + d;
 }
-//ÇĞÁ¡ °è»ê ÇÔ¼ö
-void get_grade(double a, char* b) {		//call by reference·Î ³Ñ±ä´Ù..
+//í•™ì  ê³„ì‚° í•¨ìˆ˜
+void get_grade(double a, char* b) {		//call by referenceë¡œ ë„˜ê¸´ë‹¤..
 	if ((a <= 100) && (a >= 95))
 		strcpy(b, "A+");
 	else if (a >= 90)
@@ -88,22 +88,22 @@ void get_grade(double a, char* b) {		//call by reference·Î ³Ñ±ä´Ù..
 		strcpy(b, "F");
 }
 
-//¾ÖÃÊ¿¡ ±¸Á¶Ã¼¸¦ ³Ñ±â¶ó´Â ¸»...
+//ì• ì´ˆì— êµ¬ì¡°ì²´ë¥¼ ë„˜ê¸°ë¼ëŠ” ë§...
 
 int main(void)
 {
-	STUDENT student[5] = { {2020019, "È«±æµ¿", 10,20,0,5,10},
-		{2021012,"±èÀ¯½Å",35,55,27,15,7},
-		{2019001, "°­°¨Âù",70,80,29,22,8},
-		{2018015,"¾Æ¹«°³",100,90,28,29,5},
-		{2017075,"È«±æ¼ø",56,90,15,30,10} };
+	STUDENT student[5] = { {2020019, "í™ê¸¸ë™", 10,20,0,5,10},
+		{2021012,"ê¹€ìœ ì‹ ",35,55,27,15,7},
+		{2019001, "ê°•ê°ì°¬",70,80,29,22,8},
+		{2018015,"ì•„ë¬´ê°œ",100,90,28,29,5},
+		{2017075,"í™ê¸¸ìˆœ",56,90,15,30,10} };
 
 	print_student(student, 5);
 	puts("");
 
 	STUDENT_SCORE score[5];
 	for (int i = 0; i < 5; i++) {
-		score[i].student = student[i];			//µ¿ÀÏÇÑ ±¸Á¶Ã¼¿¡°Ô ¸ğµç ¸â¹ö¸¦ ´ëÀÔÇÒ ¼ö ÀÖ´Ù..
+		score[i].student = student[i];			//ë™ì¼í•œ êµ¬ì¡°ì²´ì—ê²Œ ëª¨ë“  ë©¤ë²„ë¥¼ ëŒ€ì…í•  ìˆ˜ ìˆë‹¤..
 
 		score[i].mid_converted = mid_convert(student[i].mid);
 		score[i].final_converted = final_convert(student[i].final);
