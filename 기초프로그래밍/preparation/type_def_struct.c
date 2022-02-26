@@ -5,14 +5,15 @@
 #include <stdio.h>
 #include <string.h>
 
-//void printstats(stats arr[], int SIZE);
-
 typedef struct{
 	char* name;		//상수로 지정
 	int goals;
 	int assist;
 	int appearance;
 } stats;
+
+// stats 선언 전에 함수에서 사용해서 오류가 있었음
+void printstats(stats arr[], int SIZE);
 
 char* head[] = { "Name", "Goals", "Assist", "Apps" };
 
@@ -24,8 +25,12 @@ int main(void) {
 
 	int arysize = sizeof(liverpool) / sizeof(liverpool[0]);
 
-	//printstats(liverpool, arysize);
-	printf("%10s  %10s  %10s  %10s\n\n", head[0], head[1], head[2], head[3]);
+	//print with function
+	printstats(liverpool, arysize);
+	puts("");
+
+	//just print
+	printf("%10s  %10s  %10s  %10s\n", head[0], head[1], head[2], head[3]);
 	for (int i = 0; i < arysize; i++) {
 		printf("%10s  %10d  %10d  %10d\n", liverpool[i].name, liverpool[i].goals, liverpool[i].assist, liverpool[i].appearance);
 	}
@@ -33,11 +38,10 @@ int main(void) {
 	return 0;
 }
 
-/*
 void printstats(stats arr[], int SIZE)
 {
 	printf("%10s  %10s  %10s  %10s\n", head[0], head[1], head[2], head[3]);
 	for (int i = 0; i < SIZE; i++) {
 		printf("%10s  %10d  %10d  %10d\n", arr[i].name, arr[i].goals, arr[i].assist, arr[i].appearance);
 	}
-}*/
+}
