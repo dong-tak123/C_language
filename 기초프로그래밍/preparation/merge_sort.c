@@ -46,6 +46,8 @@ void merge_sort(int list[], int left, int right) {
 
     if (left < right) {
         mid = (left + right) / 2; // 중간 위치를 계산하여 리스트를 균등 분할 -분할(Divide)
+
+        // 왼쪽 부분 리스트부터 병합해 간다.
         merge_sort(list, left, mid); // 앞쪽 부분 리스트 정렬 -정복(Conquer)
         merge_sort(list, mid + 1, right); // 뒤쪽 부분 리스트 정렬 -정복(Conquer)
         merge(list, left, mid, right); // 정렬된 2개의 부분 배열을 합병하는 과정 -결합(Combine)
